@@ -1,0 +1,14 @@
+[
+  {
+    "categoryName": "Sedan",
+    "image": "https://media.istockphoto.com/id/1150425295/photo/3d-illustration-of-generic-hatchback-car-perspective-view.jpg?b=1&s=170667a&w=0&k=20&c=QKVzqIOrSi8pYPDM90tUOpECoLcfbe8GVIkJDBI7cb8="
+  },
+  {
+    "categoryName": "Suv",
+    "image": "https://media.istockphoto.com/id/949483148/photo/3d-illustration-of-generic-suv-car-side-view.jpg?b=1&s=170667a&w=0&k=20&c=4MyTuYd9a0RGheCRhAP4B67gNaY2fUXNvNyvgJ59hsU="
+  },
+  {
+    "categoryName": "Hatchback",
+    "image": "https://static.autox.com/uploads/cars/2021/03/mercedesbenz-a-class-limousine.jpg"
+  }
+]

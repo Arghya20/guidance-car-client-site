@@ -35,12 +35,12 @@ const Navbar = () => {
     <div className="bg-gray-50">
       <div className="px-4 py-5 mx-auto sm:max-w-xl md:max-w-full lg:max-w-screen-xl md:px-24 lg:px-8">
         <div className="relative flex items-center justify-between">
-          <a href="/" aria-label="Company" title="Company" className="inline-flex items-center">
+          <Link to="/" aria-label="Company" title="Company" className="inline-flex items-center">
             <img className="w-1/12" src={logo} alt="" />
             <span className="ml-2 text-xl font-bold tracking-wide text-gray-800 uppercase">
               Guidance Car
             </span>
-          </a>
+          </Link>
           <ul className="flex items-center hidden space-x-8 lg:flex">{menuItems}</ul>
           <div className="lg:hidden">
             <button
