@@ -19,6 +19,7 @@ const Home = () => {
           ))}
         </div>
       </div>
+      <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Provident modi dolores eveniet quisquam aliquam, nam quae aspernatur odit exercitationem ea non laudantium. At, maxime molestias illo error eveniet quia dolor.</p>
     </div>
   );
 };
