@@ -1,20 +1,22 @@
 import React, { useState } from "react";
 import "./Navbar.css";
 import logo from "../../../logo.png";
+import { FaFileImport } from "react-icons/fa";
+import { Link } from "react-router-dom";
 
 const Navbar = () => {
   const [isMenuOpen, setIsMenuOpen] = useState(false);
   const menuItems = (
     <>
       <li>
-        <a
-          href="/"
+        <Link
+          to="/"
           aria-label="Our product"
           title="Our product"
           className="font-medium tracking-wide text-gray-700 transition-colors duration-200 hover:text-deep-purple-accent-400"
         >
           Home
-        </a>
+        </Link>
       </li>
 
       <li>
