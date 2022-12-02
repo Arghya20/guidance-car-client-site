@@ -39,15 +39,15 @@ const Navbar = () => {
         <>
           {" "}
           <li>
-        <Link
-          to="/dashboard"
-          aria-label="Our product"
-          title="Our product"
-          className="font-medium tracking-wide text-gray-700 transition-colors duration-200 hover:text-deep-purple-accent-400"
-        >
-          Dashboard
-        </Link>
-      </li>
+            <Link
+              to="/dashboard"
+              aria-label="Our product"
+              title="Our product"
+              className="font-medium tracking-wide text-gray-700 transition-colors duration-200 hover:text-deep-purple-accent-400"
+            >
+              Dashboard
+            </Link>
+          </li>
           <li>
             <button
               onClick={handelLogout}
@@ -77,7 +77,7 @@ const Navbar = () => {
     </>
   );
   return (
-    <div className="bg-gray-50">
+    <div className="bg-gray-50 z-50">
       <div className="px-4 py-5 mx-auto sm:max-w-xl md:max-w-full lg:max-w-screen-xl md:px-24 lg:px-8">
         <div className="relative flex items-center justify-between">
           <Link to="/" aria-label="Company" title="Company" className="inline-flex items-center">
@@ -87,7 +87,9 @@ const Navbar = () => {
             </span>
             {user?.email && (
               <div className="absolute">
-                <span className="relative top-16 left-0 text-gray-400 text-sm bg-green-100 p-1 rounded-full">Hello👋, {user?.displayName}</span>
+                <span className="relative top-16 left-0 text-gray-400 text-sm bg-green-100 p-1 rounded-full">
+                  Hello👋, {user?.displayName}
+                </span>
               </div>
             )}
           </Link>
@@ -149,6 +151,12 @@ const Navbar = () => {
                   </div>
                   <nav>
                     <ul className="space-y-4">{menuItems}</ul>
+                    <label
+                      htmlFor="my-drawer-2"
+                      className="btn btn-primary drawer-button lg:hidden"
+                    >
+                      Open drawer
+                    </label>
                   </nav>
                 </div>
               </div>

@@ -142,7 +142,7 @@ const BookingModal = ({ car }) => {
             <input
               className="btn myBtn w-full border-none"
               type="submit"
-              value="Submit"
+              value="Book Now"
               htmlFor="bookingModal"
             />
           </form>
