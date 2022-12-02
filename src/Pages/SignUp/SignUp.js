@@ -38,7 +38,7 @@ const SignUp = () => {
   };
 
   return (
-    <div className="flex justify-center">
+    <div className="flex justify-center mb-16">
       <div className="w-full max-w-md p-8 space-y-3 rounded-xl  border border-gray-400 mt-20 shadow-xl bg-gray-100">
         <p className="text-center text-red-800 bg-red-200 rounded-full">{error}</p>
 
@@ -102,7 +102,7 @@ const SignUp = () => {
               className="w-full px-4 py-3 rounded-md shadow focus:border-violet-400"
             />
           </div>
-          <button className="block w-full p-3 text-center rounded-full  bg-black text-white">
+          <button className="block w-full p-3 text-center rounded-full myBtn font-bold text-white">
             Sign Up
           </button>
         </form>

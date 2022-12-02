@@ -1,9 +1,15 @@
-import { GithubAuthProvider, GoogleAuthProvider } from "firebase/auth";
+import { GoogleAuthProvider } from "firebase/auth";
 import React, { useContext, useState } from "react";
+import { useForm } from "react-hook-form";
 import { Link, useLocation, useNavigate } from "react-router-dom";
 import { AuthContext } from "../../context/AuthProvider/AuthProvider";
 
 const Login = () => {
+  const {
+    register,
+    formState: { errors },
+    handleSubmit,
+  } = useForm();
   const location = useLocation();
   const [error, setError] = useState("");
 
@@ -13,13 +19,8 @@ const Login = () => {
 
   const from = location.state?.from?.pathname || "/";
 
-  const handelLogin = (event) => {
-    event.preventDefault();
-    const form = event.target;
-    const email = form.email.value;
-    const password = form.password.value;
-    console.log(email, password);
-    loginUser(email, password)
+  const handleLogin = (data) => {
+    loginUser(data.email, data.password)
       .then((result) => {
         const user = result.user;
         console.log(user);
@@ -33,7 +34,6 @@ const Login = () => {
 
   const { providerLogin } = useContext(AuthContext);
   const googleProvider = new GoogleAuthProvider();
-  const githubProvider = new GithubAuthProvider();
 
   const handelGoogleLogin = () => {
     providerLogin(googleProvider)
@@ -47,46 +47,54 @@ const Login = () => {
   };
 
   return (
-    <div className="flex justify-center">
+    <div className="flex justify-center mb-20">
       <div className="w-full max-w-md p-8 space-y-3 rounded-xl  border border-gray-400 mt-20 shadow-xl bg-gray-100">
         <p className="text-center text-red-800 bg-red-200 rounded-full">{error}</p>
         <h1 className="text-2xl font-bold text-center">Login</h1>
         <form
-          onSubmit={handelLogin}
+          onSubmit={handleSubmit(handleLogin)}
           novalidate=""
           action=""
           className="space-y-6 ng-untouched ng-pristine ng-valid"
           data-bitwarden-watching="1"
         >
-          <div className="space-y-1 text-sm">
-            <label for="email" className="block ">
-              Email
+          <div className="form-control w-full max-w-xs mx-auto">
+            <label className="label">
+              {" "}
+              <span className="label-text">Email</span>
             </label>
             <input
-              required
-              type="email"
-              name="email"
-              id="email"
-              placeholder="Email"
-              className="w-full px-4 py-3 rounded-md shadow  focus:border-violet-400"
+              type="text"
+              {...register("email", {
+                required: "Email Address is required",
+              })}
+              className="input input-bordered w-full max-w-xs"
             />
+            {errors.email && <p className="text-red-600">{errors.email?.message}</p>}
           </div>
-          <div className="space-y-1 text-sm">
-            <label for="password" className="block">
-              Password
+
+          <div className="form-control w-full max-w-xs mx-auto">
+            <label className="label">
+              {" "}
+              <span className="label-text">Password</span>
             </label>
             <input
-              required
               type="password"
-              name="password"
-              id="password"
-              placeholder="Password"
-              className="w-full px-4 py-3 rounded-md shadow focus:border-violet-400"
+              {...register("password", {
+                required: "Password is required",
+                minLength: { value: 6, message: "Password must be 6 characters or longer" },
+              })}
+              className="input input-bordered w-full max-w-xs"
             />
+          
+            {errors.password && <p className="text-red-600">{errors.password?.message}</p>}
           </div>
-          <button className="block w-full p-3 text-center rounded-full  bg-black text-white">
-            Log In
-          </button>
+
+          <input
+            className="btn  w-full p-3 text-center rounded-full  text-white font-bold myBtn"
+            value="Login"
+            type="submit"
+          />
         </form>
         <div className="flex items-center pt-4 space-x-1">
           <div className="flex-1 h-px sm:w-16 bg-gray-700"></div>
