@@ -35,7 +35,9 @@ const router = createBrowserRouter([
           </PrivateRoute>
         ),
         loader: ({ params }) =>
-          fetch(`http://localhost:5000/products?categoryName=${params.categoryName}`),
+          fetch(
+            `https://assignment-server-seven.vercel.app/products?categoryName=${params.categoryName}`
+          ),
       },
       {
         path: "/login",

@@ -22,14 +22,12 @@ const SignUp = () => {
     createUser(data.email, data.password)
       .then((result) => {
         const user = result.user;
+        toast("user created Successfully");
+        saveUser(data.name, data.email);
         console.log(user);
-         navigate(from, { replace: true });
+
         setError("");
-        handelUpdateUserProfile(data.name)
-          .then(() => {})
-          .catch((error) => {
-            setError(error.message);
-          });
+        handelUpdateUserProfile(data.name);
       })
       .catch((error) => {
         setError(error.message);
@@ -41,6 +39,32 @@ const SignUp = () => {
       photoURL: photourl,
     };
     updateUserProfile(profile);
+  };
+
+  const saveUser = (name, email) => {
+    const user = { name, email };
+    fetch("https://assignment-server-seven.vercel.app/users", {
+      method: "POST",
+      headers: {
+        "content-type": "application/json",
+      },
+      body: JSON.stringify(user),
+    })
+      .then((res) => res.json())
+      .then((data) => {
+        console.log(data);
+        // navigate(from, { replace: true });
+      });
+  };
+
+  const getUserToken = (email) => {
+    fetch(`https://assignment-server-seven.vercel.app/jwt?email=${email}`)
+      .then((res) => res.json())
+      .then((data) => {
+        if (data.accessToken) {
+          localStorage.setItem("accessToken", data.accessToken);
+        }
+      });
   };
 
   return (
