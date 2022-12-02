@@ -30,14 +30,14 @@ const Navbar = () => {
       </li>
 
       <li>
-        <a
-          href="/"
+        <Link
+          to="/login"
           className="inline-flex items-center justify-center h-12 px-6 font-medium tracking-wide text-white  rounded-full shadow-lg myBtn"
           aria-label="Sign up"
           title="Sign up"
         >
           Log in
-        </a>
+        </Link>
       </li>
     </>
   );

@@ -1,7 +1,8 @@
 import React from "react";
 
 const ProductCart = ({ products }) => {
-  const { carName, image, price, owner, color, kilometer, fuelType, dec } = products;
+  const { carName, image, originalPrice, resalePrice, owner, color, kilometer, fuelType, dec } =
+    products;
   return (
     <div>
       <div className="max-w-xs rounded-md shadow-lg">
@@ -11,7 +12,11 @@ const ProductCart = ({ products }) => {
             <h2 className="text-xl font-bold tracking-wide text-blue-900">{carName}</h2>
             <p className="">
               {" "}
-              <span className="font-bold text-red-900">Price: $ </span> {price}
+              <span className="font-bold text-red-900">Original price: $ </span> {originalPrice}
+            </p>
+            <p className="">
+              {" "}
+              <span className="font-bold text-red-900">Resale price: $ </span> {resalePrice}
             </p>
             <p className="">
               {" "}
