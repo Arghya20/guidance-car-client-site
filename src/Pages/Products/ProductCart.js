@@ -1,6 +1,6 @@
 import React from "react";
 
-const ProductCart = ({ products }) => {
+const ProductCart = ({ products, setCar }) => {
   const { carName, image, originalPrice, resalePrice, owner, color, kilometer, fuelType, dec } =
     products;
   return (
@@ -39,12 +39,14 @@ const ProductCart = ({ products }) => {
               <span className="font-bold text-red-900">ADDITIONAL INFO : </span> {dec}
             </p>
           </div>
-          <button
-            type="button"
-            className="flex items-center justify-center w-full p-3 font-semibold tracking-wide rounded-full myBtn text-white"
+
+          <label
+            onClick={() => setCar(products)}
+            htmlFor="bookingModal"
+            className="flex items-center justify-center w-full p-3 font-semibold tracking-wide rounded-full myBtn text-white cursor-pointer"
           >
             Book Now
-          </button>
+          </label>
         </div>
       </div>
     </div>
