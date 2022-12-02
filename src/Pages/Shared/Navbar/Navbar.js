@@ -1,10 +1,16 @@
-import React, { useState } from "react";
+import React, { useContext, useState } from "react";
 import "./Navbar.css";
 import logo from "../../../logo.png";
-import { FaFileImport } from "react-icons/fa";
 import { Link } from "react-router-dom";
+import { AuthContext } from "../../../context/AuthProvider/AuthProvider";
 
 const Navbar = () => {
+  const { user, logOut } = useContext(AuthContext);
+  const handelLogout = () => {
+    logOut()
+      .then(() => {})
+      .catch((error) => console.log(error.massage));
+  };
   const [isMenuOpen, setIsMenuOpen] = useState(false);
   const menuItems = (
     <>
@@ -29,16 +35,45 @@ const Navbar = () => {
         </Link>
       </li>
 
-      <li>
+      {user?.uid ? (
+        <>
+          {" "}
+          <li>
         <Link
-          to="/login"
-          className="inline-flex items-center justify-center h-12 px-6 font-medium tracking-wide text-white  rounded-full shadow-lg myBtn"
-          aria-label="Sign up"
-          title="Sign up"
+          to="/dashboard"
+          aria-label="Our product"
+          title="Our product"
+          className="font-medium tracking-wide text-gray-700 transition-colors duration-200 hover:text-deep-purple-accent-400"
         >
-          Log in
+          Dashboard
         </Link>
       </li>
+          <li>
+            <button
+              onClick={handelLogout}
+              className="inline-flex items-center justify-center h-12 px-6 font-medium tracking-wide text-white  rounded-full shadow-lg myBtn"
+              aria-label="Sign up"
+              title="Sign up"
+            >
+              Log Out
+            </button>
+          </li>{" "}
+        </>
+      ) : (
+        <>
+          {" "}
+          <li>
+            <Link
+              to="/login"
+              className="inline-flex items-center justify-center h-12 px-6 font-medium tracking-wide text-white  rounded-full shadow-lg myBtn"
+              aria-label="Sign up"
+              title="Sign up"
+            >
+              Log in
+            </Link>
+          </li>{" "}
+        </>
+      )}
     </>
   );
   return (
@@ -50,6 +85,11 @@ const Navbar = () => {
             <span className="ml-2 text-xl font-bold tracking-wide text-gray-800 uppercase">
               Guidance Car
             </span>
+            {user?.email && (
+              <div className="absolute">
+                <span className="relative top-16 left-0 text-gray-400 text-sm bg-green-100 p-1 rounded-full">Hello👋, {user?.displayName}</span>
+              </div>
+            )}
           </Link>
           <ul className="flex items-center hidden space-x-8 lg:flex">{menuItems}</ul>
           <div className="lg:hidden">

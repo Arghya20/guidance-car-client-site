@@ -1,6 +1,7 @@
 import { GoogleAuthProvider } from "firebase/auth";
 import React, { useContext, useState } from "react";
 import { useForm } from "react-hook-form";
+import toast from "react-hot-toast";
 import { Link, useLocation, useNavigate } from "react-router-dom";
 import { AuthContext } from "../../context/AuthProvider/AuthProvider";
 
@@ -24,6 +25,7 @@ const Login = () => {
       .then((result) => {
         const user = result.user;
         console.log(user);
+        toast("User Login Successfully ✅");
         setError("");
         navigate(from, { replace: true });
       })
@@ -40,6 +42,8 @@ const Login = () => {
       .then((result) => {
         const user = result.user;
         console.log(user);
+        toast("User Login Successfully ✅");
+        navigate(from, { replace: true });
       })
       .catch((error) => {
         setError(error.message);
@@ -86,7 +90,7 @@ const Login = () => {
               })}
               className="input input-bordered w-full max-w-xs"
             />
-          
+
             {errors.password && <p className="text-red-600">{errors.password?.message}</p>}
           </div>
 
